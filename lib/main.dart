@@ -83,6 +83,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   text: "Click me",
                   color: Colors.green,
                   transparent: true,
+                ),
+                FBButton(
+                  onPress: () {},
+                  text: "Click me",
                 )
               ],
             ),

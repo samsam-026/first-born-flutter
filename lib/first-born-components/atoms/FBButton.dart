@@ -45,38 +45,65 @@ class FBButton extends StatelessWidget {
       );
     }
 
-    if (transparent) {
-      buttonChild = new Container(
-        child: Row(
-          children: <Widget>[getIcon(color), getText(color)],
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-        ),
-      );
+    if (icon != null) {
+      if (transparent) {
+        buttonChild = new Container(
+          child: Row(
+            children: <Widget>[getIcon(color), getText(color)],
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
+        );
 
-      return FlatButton(
-        onPressed: onPress,
-        child: buttonChild,
-      );
+        return FlatButton(
+          onPressed: onPress,
+          child: buttonChild,
+        );
+      } else {
+        buttonChild = new Container(
+          child: Row(
+            children: <Widget>[getIcon(Colors.white), getText(Colors.white)],
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
+        );
+
+        return FlatButton(
+          onPressed: onPress,
+          child: buttonChild,
+          color: color,
+        );
+      }
+    } else {
+      if (transparent) {
+        buttonChild = new Container(
+          child: Row(
+            children: <Widget>[getText(Colors.white)],
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
+        );
+
+        return FlatButton(
+          onPressed: onPress,
+          child: buttonChild,
+          color: color,
+        );
+      } else {
+        buttonChild = new Container(
+          child: Row(
+            children: <Widget>[getText(color)],
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+          ),
+        );
+
+        return FlatButton(
+          onPressed: onPress,
+          child: buttonChild,
+        );
+      }
     }
-
-    buttonChild = new Container(
-      child: Row(
-        children: <Widget>[getIcon(Colors.white), getText(Colors.white)],
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-      ),
-    );
-
-    if (child != null) {
-      buttonChild = child;
-    }
-
-    return RaisedButton(
-      onPressed: onPress,
-      child: buttonChild,
-      color: color,
-    );
   }
 
   Icon getIcon(Color iconColor) {
